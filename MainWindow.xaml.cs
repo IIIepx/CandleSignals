@@ -28,7 +28,8 @@ namespace CandlesSignal
         {
             InitializeComponent();
             List<TickerModel> Tickers = new List<TickerModel>(50)
-            {   new TickerModel {Name = "SiM0", Supply = 80, Demand = 70, Pinbar = true }
+            {   new TickerModel {Name = "SiM0", Supply = 80, Demand = 70, Pinbar = true },
+                new TickerModel {Name = "EuM0", Supply = 80, Demand = 70, Pinbar = true }
             };
             string path = System.IO.Directory.GetCurrentDirectory() + "TickerData.bin";
             FileInfo fdata = new FileInfo(path);
@@ -37,6 +38,7 @@ namespace CandlesSignal
                 Tickers = Serializer.LoadListFromBinnary<TickerModel>(path);
             }
             TickersTable.ItemsSource = Tickers;
+
         }
     }
 }
