@@ -24,21 +24,27 @@ namespace CandlesSignal
     /// </summary>
     public partial class MainWindow : Window
     {
+        TickerList Tickers = new TickerList();
+        public bool isDataChanged = false;
         public MainWindow()
         {
+
             InitializeComponent();
-            List<TickerModel> Tickers = new List<TickerModel>(50)
-            {   new TickerModel {Name = "SiM0", Supply = 80, Demand = 70, Pinbar = true },
-                new TickerModel {Name = "EuM0", Supply = 80, Demand = 70, Pinbar = true }
-            };
-            string path = System.IO.Directory.GetCurrentDirectory() + "TickerData.bin";
+            string path = System.IO.Directory.GetCurrentDirectory() + "\\TickerData.bin";
+
             FileInfo fdata = new FileInfo(path);
             if (fdata.Exists)
             {
-                Tickers = Serializer.LoadListFromBinnary<TickerModel>(path);
+                Tickers.List = Serializer.LoadListFromBinnary<TickerModel>(path);
             }
-            TickersTable.ItemsSource = Tickers;
+            TickersTable.ItemsSource = Tickers.List;
+            
 
+        }
+
+        private void btnSaveOnClick(object sender, RoutedEventArgs e)
+        {
+            WinFormsSerialization.Serializer.SaveListToBinnary<TickerModel>("TickerData.bin", Tickers.List);
         }
     }
 }
