@@ -25,6 +25,7 @@ namespace CandlesSignal
     public partial class MainWindow : Window
     {
         TickerList Tickers = new TickerList();
+        TickerModel TM = new TickerModel();
         public bool isDataChanged = false;
         public MainWindow()
         {
@@ -38,13 +39,14 @@ namespace CandlesSignal
                 Tickers.List = Serializer.LoadListFromBinnary<TickerModel>(path);
             }
             TickersTable.ItemsSource = Tickers.List;
-            
 
         }
 
         private void btnSaveOnClick(object sender, RoutedEventArgs e)
         {
             WinFormsSerialization.Serializer.SaveListToBinnary<TickerModel>("TickerData.bin", Tickers.List);
-        }
+        } 
+        
+  
     }
 }

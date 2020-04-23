@@ -8,9 +8,9 @@
         
         mc:Ignorable="d"
         Title="Юный барабанщик" Height="413.783" Width="387.123" FontFamily="Calibri" Icon="i.jpg" WindowStartupLocation="CenterScreen" Background="#FF908888">
-    
+
     <Grid x:Name="MainGrid" Margin="0,0,0,1">
-        
+
         <DataGrid Name="TickersTable" HorizontalAlignment="Left" Height="289" Margin="10,35,0,0"
                    VerticalAlignment="Top" Width="359" Background="#FF969494" BorderBrush="#FF3979B7" RowBackground="#FF908888"
                    AutoGenerateColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserReorderColumns="False"
@@ -20,15 +20,15 @@
                     <Setter Property="Background" Value="#FF969494" />
                 </Style>
                 <Style x:Key="errorStyle" TargetType="{x:Type TextBox}">
-                            <Setter Property="Padding" Value="-2"/>
-                            <Style.Triggers>
-                                <Trigger Property="Validation.HasError" Value="True">
-                                    <Setter Property="Background" Value="Red"/>
-                                </Trigger>
-                            </Style.Triggers>
-                    
-                        </Style>
-                    </DataGrid.Resources>
+                    <Setter Property="Padding" Value="-2"/>
+                    <Style.Triggers>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Инструмент" Binding="{Binding Path=Name}" Width="80" IsReadOnly="True" />
                 <DataGridTextColumn Header="Верхняя граница" EditingElementStyle="{StaticResource errorStyle}" 
@@ -40,7 +40,8 @@
 
         </DataGrid>
 
-        <Button x:Name="btnAdd" Content="Добавить"  HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="80"/>
+        <Button x:Name="btnAdd" Content="Добавить"  HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="80"
+                Click="btnAddOnClick"/>
         <Button x:Name="btnDelete" Content="Удалить" HorizontalAlignment="Center" Margin="10,340,0,0" VerticalAlignment="Top" Width="80"/>
         <Button x:Name="btnSave" Content="Сохранить" HorizontalAlignment="Left" Margin="289,340,0,0" VerticalAlignment="Top" Width="80"
                 Click="btnSaveOnClick"/>
